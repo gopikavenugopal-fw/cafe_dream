@@ -1,34 +1,36 @@
- <h2>Your Cart</h2>
+ <div class="container text-center">
+  <h2>Your Cart</h2>
 
-    <table>
-  <thead>
-    <tr>
-      <td>Menu</td>
-      <td>Price</td>
-      <td>Quantity</td>
-      <td></td>
-    </tr>
-  </thead>
-  <tbody>
-    <% @items.each do |item| %>
+      <table>
+    <thead>
       <tr>
-        <td><%= item.menu.name %></td>
-        <td><%= number_to_currency item.price %></td>
-        <td><%= item.quantity %></td>
-        <td>
-          <%= form_for item, method: :delete do |f| %>
-            <%= f.submit "Remove" %>
-          <% end %>
-        </td>
+        <td>Menu</td>
+        <td>Price</td>
+        <td>Quantity</td>
+        <td></td>
       </tr>
-    <% end %>
-    <tfoot>
-    </tfoot>
-    <tr> <td colspan="4" align="right">
-    <%= number_to_currency current_cart.subtotal %>
-    </td>
-    </tr>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @items.each do |item| %>
+        <tr>
+          <td><%= item.menu.name %></td>
+          <td><%= number_to_currency item.price %></td>
+          <td><%= item.quantity %></td>
+          <td>
+            <%= form_for item, method: :delete do |f| %>
+              <%= f.submit "Remove" %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+      <tfoot>
+      </tfoot>
+      <tr> <td colspan="4" align="right">
+      <%= number_to_currency current_cart.subtotal %>
+      </td>
+      </tr>
+    </tbody>
+  </table>
 
- <%= link_to 'Checkout', checkout_path %>
+  <%= link_to 'Checkout', checkout_path %>
+</div>
