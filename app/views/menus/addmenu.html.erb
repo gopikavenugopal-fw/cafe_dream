@@ -1,0 +1,27 @@
+<div class="container text-center">
+    <p >Add Item!</p>
+
+        <section class="UsersNew">
+            <%= form_with url: create_menus_path do |form| %>
+            <div class="Form-section">
+                <p class="Form-label">Name: </p>
+                <%=form.text_field :name, class: "Form-input"%>
+            </div>
+            
+            <div class="Form-section">
+                <p class="Form-label">Description: </p>
+                <%=form.text_field :description, class: "Form--input"%>
+            </div>
+            <div class="Form-section">
+                <p class="Form-label">Price: </p>
+                <%=form.number_field :price, class:"Form-input"%>
+            </div>
+            
+            <div class="Form-section">
+                <%=form.submit "ADD!", class: "Form-submit"%>
+            </div>
+
+            <%end%>
+        </section>
+
+</div>

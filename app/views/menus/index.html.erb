@@ -6,14 +6,21 @@
                 <li>
                     <%= menu.name %>: <br>
                     <%= menu.description %> <br>
-                    <%= number_to_currency menu.price %><br>
+                    <%= number_to_currency menu.price, unit: "Rs. " %><br>
                     <%= form_tag order_items_path do %>
                         <%= hidden_field_tag :menu_id, menu.id %>
                         <%= number_field_tag :quantity, 0 %>
                         <%= submit_tag "Add to Cart"%>
+                        <% if @current_user.try(:admin?) %>
+                            <%= link_to "Delete",destroy_menus_path(@menus), method: "delete"%>
+                        <%end %>
                     <% end %>
                     <br>
                 </li>
             <%end%>
+            <% if @current_user.try(:admin?) %>
+                <%= link_to "Add new item", "/addmenu" %>
+            <%end%>
         </ul>
+       
 </div>

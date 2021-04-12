@@ -11,28 +11,33 @@
   </head>
 
   <body>
+  <div class="container text-center">
+  
+      <% if @current_user %>
+          
+          <p> Welcome <%= @current_user.name %> ! <br>
+            <%= link_to "Sign-out", destroy_session_path, method: "delete" %> |
+            <%= link_to "Profile", user_path(current_user)%>
+          </p>
+          <p>
+            <%= link_to "Home",menus_path %> |
+            Cart (<%= link_to pluralize(current_cart.items_count,'item'), cart_path %> )
+          </p>
+        <hr>
+        <%end %>
 
-    <% if @current_user %>
-        
-        <p> Welcome <%= @current_user.name %> ! <br>
-        <%= link_to "Sign-out", destroy_session_path, method: "delete" %>
+      
+      </div>
+
+      <% if flash[:error]%>
+        <p class="Flash-error">
+          <%= flash[:error]%>
         </p>
-        <p>
-      <%= link_to "Home",menus_path %> |
-      Cart (<%= link_to pluralize(current_cart.items_count,'item'), cart_path %> )
-    </p>
-    <hr>
-      <%end %>
+      <% end %>
 
-    </div>
-
-    <% if flash[:error]%>
-      <p class="Flash-error">
-        <%= flash[:error]%>
-      </p>
-    <% end %>
-
-    
-    <%= yield %>
+      <%= render "layouts/alerts"  %>
+      
+      <%= yield %>
+</div>
   </body>
 </html>
