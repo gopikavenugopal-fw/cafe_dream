@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CafeDream</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <p>
+      <%= link_to "Home",menus_path %> |
+      Cart (<%= link_to pluralize(current_cart.items_count,'item'), cart_path %> )
+    </p>
+    <hr>
+    <%= yield %>
+  </body>
+</html>

@@ -1,0 +1,10 @@
+<h2>Checkout</h2>
+
+<%= form_for @order, url: checkout_path do |f| %>
+    <div class="form-name">
+        <%=f.label :name%>
+        <%=f.text_field :name %>
+    </div>
+    
+    <%= f.submit "Checkout"%>
+<%end%>

@@ -1,0 +1,17 @@
+<h1>Welcome to Cafe Dream!</h1>
+<h3>Your Cake Menu is here!</h3>
+    <ul>
+        <% @menus.each do |menu|%>
+            <li>
+                <%= menu.name %>: <br>
+                <%= menu.description %> <br>
+                <%= number_to_currency menu.price %><br>
+                <%= form_tag order_items_path do %>
+                     <%= hidden_field_tag :menu_id, menu.id %>
+                    <%= number_field_tag :quantity, 0 %>
+                    <%= submit_tag "Add to Cart"%>
+                <% end %>
+                <br>
+            </li>
+        <%end%>
+    </ul>
