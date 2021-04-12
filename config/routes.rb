@@ -7,6 +7,10 @@ Rails.application.routes.draw do
   get '/cart', to: 'order_items#index'
   resources :order_items, path: '/cart/items'
 
+  get "/signin", to: "sessions#new", as: :new_sessions
+  post "/signin", to: "sessions#create", as: :sessions
+  delete "/signout", to: "sessions#destroy",as: :destroy_session
+  resources :users
 
   get '/cart/checkout', to: 'orders#new', as: :checkout
   patch '/cart/checkout', to: 'orders#create'   #since existing carts are used
