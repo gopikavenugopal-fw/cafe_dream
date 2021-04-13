@@ -1,25 +1,34 @@
 <div class="container text-center"> 
-<%= link_to "Home",root_path %>
-    <div class="UserPage">
-        <p class="NewUsers-title">Sign in!</p>
+    
+    <h2 class="NewUsers-title">Sign in!</h2>
+</div>
+    
+        <div class="col-md-6 col-md-offset-5">
+                <section class="UsersNew">
+                    <%= form_with url: sessions_path do |form|%>
+                        <div class="row">
+                            <div class="form-group col-lg-6">
+                                <p class="Form-label">Email: </p>
+                                <%=form.text_field :email, class: "form-control"%>
+                            </div>
+                        </div>
 
-            <section class="UsersNew">
-                <%= form_with url: sessions_path do |form|%>
-                    <div class="Form-section">
-                        <p class="Form-label">Email: </p>
-                        <%=form.text_field :email, class: "Form-input"%>
-                    </div>
+                        <div class="row">
+                            <div class="form-group col-lg-6">
+                                <p class="Form-label">Password: </p>
+                                <%=form.password_field :password, class: "form-control"%>
+                            </div>
+                        </div>
 
-                    <div class="Form-section">
-                        <p class="Form-label">Password: </p>
-                        <%=form.password_field :password, class: "Form-input"%>
-                    </div>
+                         <div class="row">
+                            <div class="form-group col-md-6">
+                                <%=form.submit "Sign In", class: "btn btn-primary"%>
+                                <%= link_to "Home",root_path %>
+                            </div>
+                        </div>
 
-                    <div class="Form-section">
-                        <%=form.submit "Sign In", class: "Form-submit"%>
-                    </div>
-
-                <%end%>
-            </section>
-    </div>
+                    <%end%>
+                </section>
+           </div> 
+    
 </div>

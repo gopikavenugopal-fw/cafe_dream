@@ -12,17 +12,17 @@
 
   <body>
   <div class="container text-center">
-  
+    <div style="font-size: 22px;">
       <% if @current_user %>
           
           <p> Welcome <%= @current_user.name %> ! <br>
-            <%= link_to "Sign-out", destroy_session_path, method: "delete" %> |
-            <%= link_to "Profile", user_path(current_user)%>
+            
+            <%= link_to "Home",menus_path %> | 
+            <%= link_to "Profile", user_path(current_user)%> |
+            Cart (<%= link_to pluralize(current_cart.items_count,'item'), cart_path %> ) |  
+            <%= link_to "Sign-out", destroy_session_path, method: "delete" %> 
           </p>
-          <p>
-            <%= link_to "Home",menus_path %> |
-            Cart (<%= link_to pluralize(current_cart.items_count,'item'), cart_path %> )
-          </p>
+      </div>    
         <hr>
         <%end %>
 

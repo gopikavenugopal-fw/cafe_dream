@@ -1,26 +1,29 @@
 <div class="container text-center">
-    <h1>Welcome to Cafe Dream!</h1>
-    <h3>Cakes!</h3>
-        <ul>
-            <% @menus.each do |menu|%>
-                <li>
-                    <%= menu.name %>: <br>
-                    <%= menu.description %> <br>
-                    <%= number_to_currency menu.price, unit: "Rs. " %><br>
-                    <%= form_tag order_items_path do %>
-                        <%= hidden_field_tag :menu_id, menu.id %>
-                        <%= number_field_tag :quantity, 0 %>
-                        <%= submit_tag "Add to Cart"%>
-                        <% if @current_user.try(:admin?) %>
-                            <%= link_to "Delete",destroy_menus_path(@menus), method: "delete"%>
-                        <%end %>
-                    <% end %>
-                    <br>
-                </li>
-            <%end%>
-            <% if @current_user.try(:admin?) %>
-                <%= link_to "Add new item", "/addmenu" %>
-            <%end%>
-        </ul>
+    <div style="font-size:45px; font-family: helvetica;"><p>Welcome to Cafe Dream!</p></div>
+    <div style="font-size: 30px; font-family: cursive;"><p>Delicious cakes for special occasions!</p></div><br>
+        <div class="card border-dark text-white bg-dark mb-3" style="max-width: 125rem; font-size:18px;">
+            <div class="card-body">
+                <% @menus.each do |menu|%>
+                   
+                        <p class="card-title" style="font-size:25px; font-family: helvetica;"><%= menu.name %>: </p>
+                        <p class="card-text" style="font-size:18px; font-family: helvetica;"><%= menu.description %> </p>
+                        <p class="card-text" style="font-size:18px; font-family: helvetica;"><%= number_to_currency menu.price, unit: "Rs. " %></p>
+                        <p class="card-text"><%= form_tag order_items_path do %>
+                            <%= hidden_field_tag :menu_id, menu.id %>
+                            <%= number_field_tag :quantity, 0 %></p>
+                           <p class="card-text"> <%= submit_tag "Add to Cart" ,class: "btn btn-primary"%>
+                            <% if @current_user.try(:admin?) %>
+                                <%= link_to "Delete",destroy_menus_path(@menus), method: "delete"%>
+                            <%end %></p>
+                        <% end %>
+                        <br>
+                    
+                <%end%>
+                    
+            </div>
+                <% if @current_user.try(:admin?) %>
+                            <%= link_to "Add new item", "/addmenu"%>
+                <%end%>   
+        </div>
        
 </div>
