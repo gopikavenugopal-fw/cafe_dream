@@ -1,7 +1,9 @@
-<div class="container text-center" style="font-size:25px; font-family: helvetica cursive;">
-<%= link_to 'Home',menus_path %> </div>
-<div  style="font-size:35px; font-family: helvetica cursive;">
+
+<div class="container-details"  style="font-size:35px; font-family: helvetica cursive;">
+<%= image_tag "profile.gif", :size => "400x270", :align => "center"%>
         <p><%= current_user.name%></p>
         <p><%= current_user.email%></p>
         <p><%= current_user.phone%></p>
+        <%= link_to 'Home',menus_path %> </div>
 </div>
+
