@@ -1,8 +1,9 @@
 <div class="container text-center">
     <div style="font-size:45px; font-family: helvetica;"><p>Welcome to Cafe Dream!</p></div>
     <div style="font-size: 30px; font-family: cursive;"><p>Delicious cakes for special occasions!</p></div><br>
-        <div class="card border-dark text-white bg-dark mb-3" style="max-width: 125rem; font-size:18px;">
-            <div class="card-body">
+    <div class="card-deck">    
+        <div class="card " style="max-width: 125rem; font-size:18px;">
+            <div class="card-body border-dark mb-3">
                 <% @menus.each do |menu|%>
                    
                         <p class="card-title" style="font-size:25px; font-family: helvetica;"><%= menu.name %>: </p>
@@ -11,7 +12,7 @@
                         <p class="card-text"><%= form_tag order_items_path do %>
                             <%= hidden_field_tag :menu_id, menu.id %>
                             <%= number_field_tag :quantity, 0 %></p>
-                           <p class="card-text"> <%= submit_tag "Add to Cart" ,class: "btn btn-primary"%>
+                           <p class="card-text" style="font-size: 15px;"> <%= submit_tag "Add to Cart" ,class: "btn btn-primary btn-lg"%>
                             <% if @current_user.try(:admin?) %>
                                 <%= link_to "Delete",destroy_menus_path(@menus), method: "delete"%>
                             <%end %></p>
@@ -19,11 +20,11 @@
                         <br>
                     
                 <%end%>
-                    
-            </div>
+                    </div>
+            
                 <% if @current_user.try(:admin?) %>
                             <%= link_to "Add new item", "/addmenu"%>
                 <%end%>   
         </div>
-       
+      </div> 
 </div>
